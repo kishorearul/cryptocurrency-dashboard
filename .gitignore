@@ -1,0 +1,60 @@
+# Java compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+bin/
+target/
+build/
+out/
+
+# Maven
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code (keep .devcontainer tracked)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs and runtime artifacts
+*.log
+logs/
+nohup.out
+server.log
+terminal.log
+hs_err_pid*.log
+replay_pid*.log
+
+# Temp / OS editor artifacts
+*.tmp
+*.bak
+*.swp
+*~
