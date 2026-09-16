@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYPTO DASHBOARD // LIVE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- INSTITUTIONAL HEADER -->
+    <header class="dash-header">
+        <div class="header-left">
+            <div class="brand-mark" aria-hidden="true"><span></span></div>
+            <div class="brand-text">
+                <h1 class="brand-title">CRYPTO DASHBOARD</h1>
+                <div class="brand-sub">INSTITUTIONAL &middot; REAL-TIME &middot; BINANCE FEED</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="meta-row">
+                <span class="meta-label">UTC</span>
+                <span id="utcClock" class="meta-value">--:--:--</span>
+            </div>
+            <div class="meta-row status-row">
+                <span id="sysStatus" class="badge badge-live"><span class="dot"></span>SYSTEM&nbsp;LIVE</span>
+                <span id="wsStatus" class="badge badge-ws">WS&nbsp;CONNECTING</span>
+            </div>
+            <div class="meta-row meta-dim">
+                <span>FEED&nbsp;BINANCE&nbsp;<b id="feedMode">SIM</b></span>
+                <span class="sep">|</span>
+                <span>LAT&nbsp;<b id="latency">--</b>ms</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- TICKER TAPE -->
+    <div class="ticker-tape-wrap" aria-label="ticker tape">
+        <div class="ticker-label">LIVE &#9654;</div>
+        <div class="ticker-viewport">
+            <div id="tickerTape" class="ticker-track"><span class="tape-loading">CONNECTING FEED…</span></div>
+        </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <main class="dash-grid">
+        <!-- QUOTES PANEL -->
+        <section class="panel quotes-panel">
+            <div class="panel-title">
+                <span class="panel-name">QUOTES &mdash; TOP ASSETS&nbsp;[&nbsp;<span id="assetCount">6</span>&nbsp;]</span>
+                <span class="panel-meta">SORT&nbsp;<span id="sortLabel">MKT CAP</span>&nbsp;&middot;&nbsp;<span id="msgRate">0</span>&nbsp;msg/s</span>
+            </div>
+            <div class="table-wrapper">
+                <table id="cryptoTable" class="crypto-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">ASSET</th>
+                            <th data-sort="price">LAST PRICE</th>
+                            <th data-sort="change">24H %</th>
+                            <th>HIGH / LOW</th>
+                            <th data-sort="mcap">MKT CAP</th>
+                            <th>TREND</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="summary-strip">
+                <span class="sum-item">TOT.MCAP&nbsp;<b id="totalMarketCap">$0</b></span>
+                <span class="sum-item">GAINER&nbsp;<b id="topGainer" class="positive">-</b></span>
+                <span class="sum-item">LOSER&nbsp;<b id="topLoser" class="negative">-</b></span>
+                <span class="sum-item">UPD&nbsp;<b id="timestamp">--</b></span>
+            </div>
+        </section>
+
+        <!-- SIDE PANELS -->
+        <aside class="side-col">
+            <section class="panel depth-panel">
+                <div class="panel-title"><span class="panel-name">MARKET DEPTH &mdash; <span id="depthSym">BTC/USDT</span></span><span class="tag-sim">SIM</span></div>
+                <div class="depth-bars">
+                    <div class="depth-row depth-head"><span>BID VOL</span><span>PRICE</span><span>ASK VOL</span></div>
+                    <div id="depthBars"></div>
+                </div>
+            </section>
+
+            <section class="panel book-panel">
+                <div class="panel-title"><span class="panel-name">ORDER BOOK &mdash; <span id="bookSym">BTC/USDT</span></span><span id="spread" class="spread">SPREAD --</span></div>
+                <div class="book-cols">
+                    <div class="book-side">
+                        <div class="book-head bids-t">BIDS</div>
+                        <div id="bids"></div>
+                    </div>
+                    <div class="book-side">
+                        <div class="book-head asks-t">ASKS</div>
+                        <div id="asks"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel log-panel">
+                <div class="panel-title"><span class="panel-name">SYSTEM LOG</span><span class="panel-meta">tail -n 30</span></div>
+                <div id="sysLog" class="sys-log"></div>
+            </section>
+        </aside>
+    </main>
+
+    <!-- COMMAND LINE -->
+    <footer class="cmd-footer">
+        <div id="cmdOutput" class="cmd-output"></div>
+        <div class="cmdline">
+            <span class="prompt">COMMAND &gt;</span>
+            <input id="cmdInput" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="type 'help' — cmds: sort, filter, select, pause, resume, snapshot, clear" />
+        </div>
+        <div class="status-bar">
+            <span>HTTP&nbsp;8080</span><span>WS&nbsp;8081</span>
+            <span id="connDetail">WS …</span>
+            <span>MODE&nbsp;<span id="modeLabel">STREAM</span></span>
+            <span class="accent">INSTITUTIONAL TERMINAL</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
